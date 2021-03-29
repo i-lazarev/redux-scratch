@@ -1,17 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import AddTodo from "./components/AddTodo";
+import ShowTodos from "./components/ShowTodos";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const App = () => {
+  const [todoState, setTodoState] = useState([]);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  const addTodo = (todo) => {
+    setTodoState([...todoState, todo]);
+  };
+
+  return (
+    <div>
+      <h1>Functional component</h1>
+      <AddTodo add={addTodo} />
+      <ShowTodos list={todoState} />
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById("root"));
