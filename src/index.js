@@ -10,17 +10,8 @@ import InProgress from "./components/InProgress";
 import reducers from "./reducers";
 
 const App = () => {
-  // const [todoState, setTodoState] = useState([]);
-
-  // const addTodo = (todo) => {
-  //   setTodoState([...todoState, todo]);
-  // };
-
   return (
     <div>
-      {/* <h1>Functional component</h1>
-      <AddTodo add={addTodo} />
-      <ShowTodos list={todoState} /> */}
       <AddTodo />
       <ShowTodos />
       <InProgress />

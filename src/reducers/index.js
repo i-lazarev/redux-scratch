@@ -11,13 +11,19 @@ const todosReducer = (todos = todoList, action) => {
     todoList.splice(action.payload, 1);
     return [...todoList]; // return a new copy
   }
+  if (action.type === "ADD_INPROGRESS") {
+    todoList.splice(action.payload.idx, 1);
+    return [...todoList];
+  }
+
   return todos;
 };
 
 const inProgressList = [];
+
 const inProgressReducer = (inProgress = inProgressList, action) => {
   if (action.type === "ADD_INPROGRESS") {
-    inProgressList.push(action.payload);
+    inProgressList.push(action.payload.todo);
     return [...inProgressList];
   }
 
