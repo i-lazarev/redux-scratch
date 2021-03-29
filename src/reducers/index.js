@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 
 const todoList = ["This is a todo"];
-const inProgressList = [];
 
 const todosReducer = (todos = todoList, action) => {
   if (action.type === "ADD_TODO") {
@@ -14,8 +13,10 @@ const todosReducer = (todos = todoList, action) => {
   }
   return todos;
 };
+
+const inProgressList = [];
 const inProgressReducer = (inProgress = inProgressList, action) => {
-  if (action.type === "9") {
+  if (action.type === "ADD_INPROGRESS") {
     inProgressList.push(action.payload);
     return [...inProgressList];
   }
