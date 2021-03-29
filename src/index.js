@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
 import AddTodo from "./components/AddTodo";
-import ShowTodos from "./components/ShowTodos";
+import ShowTodos from "./components/ShowToDo";
 
 const App = () => {
-  const [todoState, setTodoState] = useState([]);
+  // const [todoState, setTodoState] = useState([]);
 
-  const addTodo = (todo) => {
-    setTodoState([...todoState, todo]);
-  };
+  // const addTodo = (todo) => {
+  //   setTodoState([...todoState, todo]);
+  // };
 
   return (
     <div>
-      <h1>Functional component</h1>
+      {/* <h1>Functional component</h1>
       <AddTodo add={addTodo} />
-      <ShowTodos list={todoState} />
+      <ShowTodos list={todoState} /> */}
+      <AddTodo />
+      <ShowTodos />
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={createStore(null)}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

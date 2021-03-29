@@ -1,32 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 const AddTodo = (props) => {
-  const [inputState, setInputState] = useState("");
+  const inputRef = useRef();
+  const addBtn = () => {
+    props.save(inputRef.current.value);
+  };
+
   return (
     <div>
-      <input
-        value={inputState}
-        type="text"
-        placeholder="Enter your Todo"
-        onChange={(e) => {
-          setInputState(e.target.value);
-        }}
-      />
-      <button
-        onClick={() => {
-          if (inputState.trim()) {
-            props.add(inputState);
-          }
-          setInputState("");
-        }}
-        style={{
-          background: "lightBlue",
-          borderRadius: "8px",
-          margin: "5px",
-        }}
-      >
-        Add
-      </button>
+      <input type="text" ref={inputRef} />
+      <button onClick={addBtn}>Add</button>
     </div>
   );
 };
