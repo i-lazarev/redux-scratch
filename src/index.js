@@ -5,6 +5,7 @@ import { createStore } from "redux";
 
 import AddTodo from "./components/AddTodo";
 import ShowTodos from "./components/ShowToDo";
+import InProgress from "./components/InProgress";
 
 import reducers from "./reducers";
 
@@ -22,6 +23,7 @@ const App = () => {
       <ShowTodos list={todoState} /> */}
       <AddTodo />
       <ShowTodos />
+      <InProgress />
     </div>
   );
 };
