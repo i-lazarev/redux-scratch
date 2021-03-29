@@ -6,6 +6,8 @@ import { createStore } from "redux";
 import AddTodo from "./components/AddTodo";
 import ShowTodos from "./components/ShowToDo";
 
+import reducers from "./reducers";
+
 const App = () => {
   // const [todoState, setTodoState] = useState([]);
 
@@ -25,7 +27,7 @@ const App = () => {
 };
 
 ReactDOM.render(
-  <Provider store={createStore(null)}>
+  <Provider store={createStore(reducers)}>
     <App />
   </Provider>,
   document.getElementById("root")
