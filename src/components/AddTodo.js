@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { connect } from "react-redux";
+import { addTodo } from "../actions/index";
 
 const AddTodo = (props) => {
   const inputRef = useRef();
@@ -8,10 +10,10 @@ const AddTodo = (props) => {
 
   return (
     <div>
-      <input type="text" ref={inputRef} />
       <button onClick={addBtn}>Add</button>
+      <input ref={inputRef} type="text" />
     </div>
   );
 };
 
-export default AddTodo;
+export default connect(null, { save: addTodo })(AddTodo);
