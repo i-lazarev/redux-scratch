@@ -15,7 +15,6 @@ const todosReducer = (todos = todoList, action) => {
     todoList.splice(action.payload.idx, 1);
     return [...todoList];
   }
-
   return todos;
 };
 
@@ -26,11 +25,26 @@ const inProgressReducer = (inProgress = inProgressList, action) => {
     inProgressList.push(action.payload.todo);
     return [...inProgressList];
   }
+  if (action.type === "ADD_DONE") {
+    inProgressList.splice(action.payload.idx, 1);
+    return [...inProgressList];
+  }
 
   return inProgress;
+};
+
+const donelist = [];
+
+const doneReducer = (done = donelist, action) => {
+  if (action.type === "ADD_DONE") {
+    donelist.push(action.payload.inProgress);
+    return [...donelist];
+  }
+  return done;
 };
 
 export default combineReducers({
   todos: todosReducer,
   inProgressList: inProgressReducer,
+  doneList: doneReducer,
 });

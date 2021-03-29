@@ -18,3 +18,10 @@ export const addInProgress = (todo, idx) => {
     payload: { todo, idx },
   };
 };
+
+export const addDone = (inProgress, idx) => {
+  return {
+    type: "ADD_DONE",
+    payload: { inProgress, idx },
+  };
+};
