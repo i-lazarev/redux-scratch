@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const todoList = ["This is a todo"];
+const todoList = ["1","2","3","4","5"];
 
 const todosReducer = (todos = todoList, action) => {
   if (action.type === "ADD_TODO") {
@@ -14,6 +14,10 @@ const todosReducer = (todos = todoList, action) => {
   if (action.type === "ADD_INPROGRESS") {
     todoList.splice(action.payload.idx, 1);
     return [...todoList];
+  }
+  if(action.type ==="MOVE_TO_TODO"){
+      todoList.push(action.payload.inProgress)
+      return [...todoList];
   }
   return todos;
 };
@@ -33,6 +37,14 @@ const inProgressReducer = (inProgress = inProgressList, action) => {
     inProgressList.splice(action.payload, 1);
     return [...inProgressList]; // return a new copy
   }
+  if(action.type ==="MOVE_TO_TODO"){
+      inProgressList.splice(action.payload.idx, 1);
+      return [...inProgressList]; // return a new copy
+  }
+  if(action.type==="MOVE_TO_PROG"){
+      inProgressList.push(action.payload.done)
+      return [...inProgressList];
+  }
 
   return inProgress;
 };
@@ -47,6 +59,10 @@ const doneReducer = (done = donelist, action) => {
   if (action.type === "DELETE_DONE") {
     donelist.splice(action.payload, 1);
     return [...donelist];
+  }
+  if(action.type === "MOVE_TO_PROG"){
+      donelist.splice(action.payload.idx, 1)
+      return [...donelist];
   }
   return done;
 };

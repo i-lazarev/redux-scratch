@@ -39,3 +39,17 @@ export const deleteDone = (idx) => {
     payload: idx,
   };
 };
+
+export const moveToTodo = (inProgress, idx) => {
+  return {
+    type: "MOVE_TO_TODO",
+    payload: { inProgress, idx },
+  };
+};
+
+export const moveToProgress = (done, idx) => {
+    return {
+        type: "MOVE_TO_PROG",
+        payload: { done, idx },
+    };
+};

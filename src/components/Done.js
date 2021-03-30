@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteDone } from "../actions";
+import { deleteDone, moveToProgress } from "../actions";
 
 const Done = (props) => {
-  const deleteBtn = (idx) => {
-    props.deleteDone(idx);
-  };
+
+
   return (
     <div>
       <h2>Done</h2>
@@ -13,13 +12,8 @@ const Done = (props) => {
         {props.doneList.map((elm, idx) => (
           <li key={idx}>
             {elm}
-            <button
-              onClick={() => {
-                deleteBtn(idx);
-              }}
-            >
-              Delete
-            </button>
+            <button onClick={() => { props.deleteDone(idx) }}>Delete</button>
+            <button onClick={() =>{props.moveToProgress(elm,idx)}}>Back to in progress</button>
           </li>
         ))}
       </ul>
@@ -33,4 +27,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { deleteDone })(Done);
+export default connect(mapStateToProps, { deleteDone, moveToProgress })(Done);
