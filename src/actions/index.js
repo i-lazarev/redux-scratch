@@ -29,13 +29,13 @@ export const addDone = (inProgress, idx) => {
 export const deleteInProgress = (idx) => {
   return {
     type: "DELETE_PROG",
-    payload: { idx },
+    payload: idx,
   };
 };
 
 export const deleteDone = (idx) => {
   return {
     type: "DELETE_DONE",
-    payload: { idx },
+    payload: idx,
   };
 };
