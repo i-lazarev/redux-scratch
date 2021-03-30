@@ -25,3 +25,17 @@ export const addDone = (inProgress, idx) => {
     payload: { inProgress, idx },
   };
 };
+
+export const deleteInProgress = (idx) => {
+  return {
+    type: "DELETE_PROG",
+    payload: { idx },
+  };
+};
+
+export const deleteDone = (idx) => {
+  return {
+    type: "DELETE_DONE",
+    payload: { idx },
+  };
+};

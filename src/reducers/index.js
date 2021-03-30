@@ -29,6 +29,10 @@ const inProgressReducer = (inProgress = inProgressList, action) => {
     inProgressList.splice(action.payload.idx, 1);
     return [...inProgressList];
   }
+  if (action.type === "DELETE_PROG") {
+    inProgressList.splice(action.payload, 1);
+    return [...inProgressList]; // return a new copy
+  }
 
   return inProgress;
 };
@@ -38,6 +42,10 @@ const donelist = [];
 const doneReducer = (done = donelist, action) => {
   if (action.type === "ADD_DONE") {
     donelist.push(action.payload.inProgress);
+    return [...donelist];
+  }
+  if (action.type === "DELETE_DONE") {
+    donelist.splice(action.payload, 1);
     return [...donelist];
   }
   return done;

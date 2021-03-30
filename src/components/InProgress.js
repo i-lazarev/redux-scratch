@@ -1,10 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addDone } from "../actions";
+import { addDone, deleteInProgress } from "../actions";
 
 const InProgress = (props) => {
   const doneBtn = (elm, idx) => {
     props.addDone(elm, idx);
+  };
+  const deleteBtn = (idx) => {
+    props.deleteInProgress(idx);
   };
 
   return (
@@ -14,6 +17,13 @@ const InProgress = (props) => {
         {props.progressList.map((elm, idx) => (
           <li key={idx}>
             {elm}
+            <button
+              onClick={() => {
+                deleteBtn(idx);
+              }}
+            >
+              Delete
+            </button>
             <button
               onClick={() => {
                 doneBtn(elm, idx);
@@ -34,4 +44,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addDone })(InProgress);
+export default connect(mapStateToProps, { addDone, deleteInProgress })(
+  InProgress
+);
